@@ -348,7 +348,7 @@
       background: color-mix(in srgb, var(--oc) 14%, rgba(8,5,18,0.6)); }
 
     /* Generated content shapes (pop out of the engine on drop, draggable) */
-    .shape { position:absolute; z-index:7; border-radius:5px;
+    .shape { position:absolute; z-index:7; border-radius:5px; touch-action: none;
       border:1.5px solid var(--oc); background: color-mix(in srgb, var(--oc) 44%, rgba(14,9,24,0.55));
       box-shadow: 0 8px 22px rgba(0,0,0,0.5), 0 0 16px -4px var(--oc), inset 0 0 0 1px rgba(255,255,255,0.08);
       cursor:grab; touch-action:none; opacity:0;
@@ -1544,6 +1544,11 @@
       sd.style.top  = (e.clientY - wr.top) + 'px';
     });
     window.addEventListener('pointerup', function () { if (sd) { sd.classList.remove('dragging'); sd = null; } });
+    // If the browser cancels a touch mid-drag (e.g. treats it as a scroll), reset cleanly so nothing gets stuck.
+    window.addEventListener('pointercancel', function () {
+      if (dragging) { dragging = false; thumb.classList.remove('dragging'); stage.classList.remove('dropping'); home(); }
+      if (sd) { sd.classList.remove('dragging'); sd = null; }
+    });
   })();
 
   /* ─────────────────────────────────────────────────────────────
