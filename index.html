@@ -1121,12 +1121,26 @@
       <div class="contact-shell reveal">
         <div class="eyebrow">Let's talk</div>
         <h2 class="section-h">Ready to create once<br>and post everywhere?</h2>
-        <p class="section-p center">Just your name and email. We'll reach out within 48 hours to set up a quick planning call.</p>
+        <p class="section-p center">Tell us a bit about your content and we'll get back to you within 48 hours.</p>
         <form class="contact-form" id="contact-form" action="https://formsubmit.co/ajax/landon@cosmicarcmedia.com" method="POST">
           <div class="form-row">
             <div class="fg"><label for="name">Your name</label><input type="text" id="name" name="name" placeholder="Jane Smith" required></div>
             <div class="fg"><label for="email">Email address</label><input type="email" id="email" name="email" placeholder="jane@company.com" required></div>
           </div>
+          <div class="form-row">
+            <div class="fg"><label for="phone">Phone (optional)</label><input type="tel" id="phone" name="phone" placeholder="(555) 123-4567"></div>
+            <div class="fg"><label for="service">What are you interested in?</label>
+              <select id="service" name="service">
+                <option value="">Select a service...</option>
+                <option value="podcast">Podcast Production</option>
+                <option value="youtube">YouTube Content</option>
+                <option value="social">Short-Form Social</option>
+                <option value="full">Full Content Package</option>
+                <option value="unsure">Not sure yet</option>
+              </select>
+            </div>
+          </div>
+          <div class="fg"><label for="message">Tell us about your content</label><textarea id="message" name="message" placeholder="What kind of content do you create? What platforms are you on? What's your biggest challenge right now?"></textarea></div>
           <input type="hidden" name="_subject" value="New lead from cosmicarcmedia.com">
           <input type="hidden" name="_template" value="table">
           <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
@@ -1585,7 +1599,7 @@
         const f = mediaEl.querySelector('iframe'); if (f) { f.remove(); }   // stop YouTube playback on close
       }
       setTimeout(function () { modal.hidden = true; }, 380);
-      if (lastFocus) { try { lastFocus.focus(); } catch (e) {} }
+      if (lastFocus) { try { lastFocus.focus({ preventScroll: true }); } catch (e) {} }
     }
     let vbi = 0;
     document.querySelectorAll('[data-modal]').forEach(function (el) {
