@@ -1,0 +1,11 @@
+# macOS
+.DS_Store
+
+# local-only working files (not part of the deployed site)
+index-old.html
+backup.py
+backups/
+teleprompter-scripts/
+video-scripts.md
+assets/logo-icon-color-backup.png
+*.pre-rollback
