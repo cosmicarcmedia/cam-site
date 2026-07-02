@@ -599,8 +599,29 @@
 
     /* Engine stage on small screens */
     @media (max-width: 680px) {
-      .estage { aspect-ratio: 3 / 4; }
-      .sched-body { flex-direction: column; }
+      /* Content Engine demo: give it room + declutter so nothing overlaps on a phone */
+      .estage { aspect-ratio: auto; height: 70vh; min-height: 480px; max-height: 640px; }
+      .flow-wrap { margin-top: 44px; }
+
+      /* Phase 0: a bigger, easier-to-grab footage file */
+      .vthumb { width: 30%; top: 73%; }
+
+      /* Phase 2: hide the label pills (they collide with the pieces on a narrow screen) */
+      .track-label { display: none; }
+      .ecore { width: 27%; }
+      .estage.phase1 .ecore { left: 30%; }
+      .estage.phase2 .ecore { left: 15%; }
+      .evid { width: 20%; }
+      .estage.phase2 .evid { left: 41%; }
+
+      /* Scheduler: week grid above, totals below, nothing bleeding together */
+      .sched-body { flex-direction: column; gap: 10px; }
+      .sched-cal { flex: 0 0 auto; }
+      .sweek { flex: 0 0 auto; }
+      .sched.month .sweek { flex-basis: auto; }
+      .sblock { height: 21px; padding: 0 5px; }
+      .sb-lab { display: none; }
+      .sday { padding: 14px 3px 5px; gap: 4px; justify-content: flex-start; }
       .sched-tot { width: 100%; min-width: 0; flex-direction: row; flex-wrap: wrap; align-items: center; }
       .st-row { flex: 1 1 40%; }
       .st-grand { flex: 1 1 100%; margin-top: 0; border-top: none; padding-top: 0; flex-direction: row; gap: 6px; align-items: baseline; }
@@ -1368,10 +1389,12 @@
     }
     function spawnShapes() {
       const W = enginePanel.clientWidth, H = enginePanel.clientHeight;
-      const startX = W * 0.65, endX = W * 0.86, span = endX - startX;
+      const isM = W < 480;   // phone: fewer pieces, spread wider so they don't pile up
+      const startX = W * (isM ? 0.55 : 0.65), endX = W * (isM ? 0.92 : 0.86), span = endX - startX;
       let gi = 0;   // global order: categories top-to-bottom, pieces left-to-right
       TRACKS.forEach(function (tk, ti) {
-        const n = tk.types ? tk.types.length : tk.n;
+        const baseN = tk.types ? tk.types.length : tk.n;
+        const n = (isM && !tk.types) ? Math.min(baseN, 4) : baseN;
         const ty = H * tk.y;
         for (let i = 0; i < n; i++) {
           const type = tk.types ? tk.types[i] : tk.type;
