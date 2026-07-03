@@ -670,7 +670,7 @@
     .clip-head { margin-top: 20px; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); }
     .clip-strip { display: flex; gap: 8px; overflow-x: auto; margin-top: 9px; padding-bottom: 4px; scroll-snap-type: x mandatory; scrollbar-width: none; }
     .clip-strip::-webkit-scrollbar { display: none; }
-    .clip-tile { flex: 0 0 31%; scroll-snap-align: start; position: relative; aspect-ratio: 16/9; border-radius: 8px; overflow: hidden;
+    .clip-tile { flex: 0 0 27%; scroll-snap-align: start; position: relative; aspect-ratio: 9/16; border-radius: 8px; overflow: hidden;
       border: 1px solid var(--glass-border); background: #0e0820 center/cover no-repeat; text-decoration: none; }
     .clip-tile .clip-play { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 26px; height: 26px; border-radius: 50%;
       background: rgba(255,77,141,0.92); display: grid; place-items: center; }
@@ -1870,7 +1870,7 @@
       var tiles;
       if (w.clips && w.clips.length) {
         tiles = w.clips.map(function (c) {
-          return '<a class="clip-tile" href="https://youtu.be/' + c + '" target="_blank" rel="noopener" style="background-image:url(' + thumb(c) + ')"><span class="clip-play">' + playSvg + '</span></a>';
+          return '<a class="clip-tile" href="https://youtube.com/shorts/' + c + '" target="_blank" rel="noopener" style="background-image:url(https://i.ytimg.com/vi/' + c + '/oar2.jpg)"><span class="clip-play">' + playSvg + '</span></a>';
         }).join('');
       } else {
         tiles = '<span class="clip-tile clip-ph"><span class="clip-play">' + playSvg + '</span></span>'.repeat(4);
