@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../assets/logo-icon.png?v=2">
+  <link rel="apple-touch-icon" href="../assets/logo-icon.png?v=2">
+
+  <title>Your Content Looks Terrible | Cosmic Arc Media</title>
+  <meta name="description" content="Blurry clips, bathroom audio, three posts a year. Cosmic Arc Media fixes it. Give us about two hours a month and get up to 100 pieces of content, written, shot, edited and posted for you.">
+  <link rel="canonical" href="https://cosmicarcmedia.com/angry/">
+  <meta name="robots" content="noindex,follow">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Your content looks terrible. Somebody should fix that.">
+  <meta property="og:description" content="Two hours a month from you. Up to 100 pieces of content from us. Cosmic Arc Media, San Angelo, TX.">
+  <meta property="og:url" content="https://cosmicarcmedia.com/angry/">
+  <meta property="og:image" content="https://cosmicarcmedia.com/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Your content looks terrible. Somebody should fix that.">
+  <meta name="twitter:description" content="Two hours a month from you. Up to 100 pieces of content from us.">
+  <meta name="twitter:image" content="https://cosmicarcmedia.com/assets/og-image.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #040210;
+      --bg-2:    #0c0622;
+      --pink:    #ff4d8d;
+      --hot:     #ff2e63;
+      --violet:  #8b5cf6;
+      --text:    #ffffff;
+      --muted:   #b9aad6;
+      --dim:     #6f5fa6;
+      --line:    rgba(255,255,255,0.12);
+      --ease:    cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    .wrap { width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+
+    /* Warning bar */
+    .warn {
+      background: var(--pink);
+      color: #12051f;
+      font-size: 14px;
+      font-weight: 600;
+      text-align: center;
+      padding: 9px 16px;
+    }
+    .warn a { font-weight: 800; text-underline-offset: 3px; }
+
+    /* Nav */
+    nav { padding: 22px 0; }
+    .nav-in { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .logo img { width: 36px; height: 36px; }
+    .logo span { font-weight: 800; font-size: 17px; letter-spacing: -0.01em; }
+    .logo span b { font-weight: 500; color: var(--muted); margin-left: 5px; }
+    .nav-cta {
+      text-decoration: none; font-weight: 700; font-size: 15px;
+      border: 2px solid var(--pink); color: var(--pink);
+      padding: 9px 18px; border-radius: 8px;
+      transition: background .2s, color .2s;
+    }
+    .nav-cta:hover { background: var(--pink); color: #12051f; }
+
+    /* Hero */
+    .hero { padding: 56px 0 96px; }
+    .hero-grid { display: grid; grid-template-columns: 1.35fr 1fr; gap: 56px; align-items: center; }
+    h1 {
+      font-size: clamp(54px, 9.4vw, 132px);
+      line-height: 0.92;
+      font-weight: 900;
+      letter-spacing: -0.045em;
+      word-spacing: 0.1em;
+    }
+    h1 .bad { color: var(--pink); display: inline-block; }
+    h1 .bad.shake { animation: shake .55s var(--ease) 1; }
+    @keyframes shake {
+      0%,100% { transform: translate(0,0) rotate(0); }
+      15% { transform: translate(-6px,2px) rotate(-1.5deg); }
+      30% { transform: translate(5px,-2px) rotate(1.2deg); }
+      45% { transform: translate(-4px,1px) rotate(-.8deg); }
+      60% { transform: translate(3px,0) rotate(.6deg); }
+      75% { transform: translate(-2px,0) rotate(-.3deg); }
+    }
+    .hero-sub {
+      margin-top: 28px;
+      font-size: clamp(26px, 3.2vw, 40px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+    .hero-sub em { font-style: normal; color: var(--muted); font-weight: 600; font-size: .62em; display: block; margin-top: 8px; letter-spacing: -0.01em; }
+    .hero-p { margin-top: 24px; max-width: 560px; font-size: 18px; color: var(--muted); }
+    .hero-actions { margin-top: 34px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 24px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--pink); color: #12051f;
+      font-weight: 800; font-size: 18px; text-decoration: none;
+      padding: 17px 30px; border-radius: 10px; border: 0; cursor: pointer;
+      font-family: inherit;
+      transition: transform .2s var(--ease), background .2s;
+    }
+    .btn:hover { background: #ff6a9f; transform: translateY(-2px); }
+    .btn:active { transform: translateY(0); }
+    .quiet { color: var(--muted); font-size: 15px; text-underline-offset: 3px; }
+    .quiet:hover { color: var(--text); }
+    .hero-note { margin-top: 18px; font-size: 14px; color: var(--dim); }
+
+    /* Exhibit A: a bad post */
+    .exhibit { position: relative; justify-self: center; width: 100%; max-width: 340px; }
+    .exhibit-label {
+      position: absolute; top: -34px; left: 6px; z-index: 2;
+      font-weight: 800; font-size: 15px; color: var(--pink);
+      transform: rotate(-3deg);
+    }
+    .post {
+      background: #f4f1ea; color: #222;
+      border-radius: 14px; overflow: hidden;
+      transform: rotate(4deg);
+      box-shadow: 0 30px 60px rgba(0,0,0,.55);
+      font-family: 'Comic Sans MS', 'Comic Sans', 'Chalkboard SE', cursive;
+    }
+    .post-head { display: flex; align-items: center; gap: 9px; padding: 11px 13px; font-family: Arial, sans-serif; font-size: 13px; }
+    .post-av { width: 28px; height: 28px; border-radius: 50%; background: #c9c3b6; }
+    .post-name { font-weight: 700; }
+    .post-name small { display: block; font-weight: 400; color: #888; font-size: 11px; }
+    .post-shot {
+      position: relative; aspect-ratio: 1 / 1; overflow: hidden;
+      background: #3a3a3a;
+    }
+    .post-shot .blurwrap {
+      position: absolute; inset: -20px;
+      background:
+        radial-gradient(circle at 30% 35%, #f6d98a 0 9%, transparent 22%),
+        linear-gradient(170deg, #7a6f5c 0%, #4b443a 55%, #2d2a25 100%);
+      filter: blur(9px) saturate(.6);
+      transform: rotate(-7deg);
+    }
+    .post-shot .play {
+      position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);
+      width: 58px; height: 58px; border-radius: 50%; background: rgba(0,0,0,.45);
+      display: grid; place-items: center; color: #fff; font-size: 22px; font-family: Arial, sans-serif;
+    }
+    .post-shot .wm {
+      position: absolute; right: 8px; bottom: 8px; font-family: Arial, sans-serif;
+      font-size: 10px; color: rgba(255,255,255,.75); background: rgba(0,0,0,.35); padding: 2px 6px; border-radius: 3px;
+    }
+    .post-shot .txt {
+      position: absolute; left: 0; right: 0; top: 14%;
+      text-align: center; font-size: 26px; font-weight: 700; color: #ffef3a;
+      text-shadow: 2px 2px 0 #c00, -1px -1px 0 #00f;
+      transform: rotate(-3deg);
+    }
+    .post-cap { padding: 11px 13px 4px; font-size: 14px; line-height: 1.35; }
+    .post-cap .tags { color: #2f62c8; word-break: break-word; }
+    .post-foot { padding: 6px 13px 13px; font-family: Arial, sans-serif; font-size: 12px; color: #888; }
+
+    /* Sins checklist */
+    .sins { padding: 110px 0; border-top: 1px solid var(--line); }
+    .sins-grid { display: grid; grid-template-columns: 1fr 360px; gap: 64px; align-items: start; }
+    h2 {
+      font-size: clamp(40px, 6vw, 76px);
+      font-weight: 900; letter-spacing: -0.04em; line-height: 0.98;
+    }
+    .lede { margin-top: 18px; font-size: 19px; color: var(--muted); max-width: 560px; }
+    .sin-list { list-style: none; margin-top: 44px; }
+    .sin-list li { border-bottom: 1px solid var(--line); }
+    .sin-list li:first-child { border-top: 1px solid var(--line); }
+    .sin {
+      display: flex; align-items: center; gap: 18px;
+      padding: 20px 6px; cursor: pointer; user-select: none;
+      font-size: clamp(17px, 1.7vw, 21px); font-weight: 600;
+      transition: color .2s, padding-left .25s var(--ease);
+    }
+    .sin input { position: absolute; opacity: 0; pointer-events: none; }
+    .box {
+      flex: 0 0 28px; height: 28px; border-radius: 7px;
+      border: 2px solid var(--dim);
+      display: grid; place-items: center;
+      transition: background .2s, border-color .2s, transform .25s var(--ease);
+    }
+    .box svg { width: 16px; height: 16px; opacity: 0; transform: scale(.4); transition: opacity .2s, transform .25s var(--ease); }
+    .sin:hover .box { border-color: var(--pink); }
+    .sin input:focus-visible + .box { outline: 3px solid var(--violet); outline-offset: 3px; }
+    .sin input:checked + .box { background: var(--pink); border-color: var(--pink); transform: rotate(-6deg); }
+    .sin input:checked + .box svg { opacity: 1; transform: scale(1); }
+    .sin.on { color: var(--pink); padding-left: 14px; }
+    .guilty {
+      margin-left: auto; font-size: 13px; font-weight: 800; color: var(--pink);
+      opacity: 0; transform: translateX(8px); transition: opacity .2s, transform .25s var(--ease);
+    }
+    .sin.on .guilty { opacity: 1; transform: none; }
+
+    .verdict {
+      position: sticky; top: 32px;
+      background: var(--bg-2); border: 1px solid var(--line); border-radius: 16px;
+      padding: 30px 28px;
+    }
+    .verdict-k { font-size: 14px; font-weight: 700; color: var(--dim); }
+    .score { margin-top: 6px; font-size: 96px; font-weight: 900; letter-spacing: -0.05em; line-height: 1; }
+    .score span { color: var(--dim); font-size: .42em; letter-spacing: -0.02em; margin-left: 4px; }
+    .meter { margin-top: 18px; height: 10px; border-radius: 6px; background: rgba(255,255,255,.08); overflow: hidden; }
+    .meter i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--violet), var(--pink), var(--hot)); transition: width .45s var(--ease); }
+    .verdict-t { margin-top: 20px; font-size: 22px; font-weight: 800; line-height: 1.2; letter-spacing: -0.01em; min-height: 54px; }
+    .verdict .btn { margin-top: 22px; width: 100%; justify-content: center; font-size: 17px; padding: 15px 20px; }
+
+    /* The fix: full-bleed pink */
+    .fix { background: var(--pink); color: #12051f; padding: 110px 0; }
+    .fix h2 { color: #12051f; }
+    .fix-lede { margin-top: 20px; font-size: 20px; font-weight: 500; max-width: 640px; }
+    .math {
+      margin-top: 56px; display: grid; grid-template-columns: 1fr auto 1fr; gap: 28px; align-items: end;
+      border-top: 3px solid #12051f; padding-top: 34px;
+    }
+    .math-n { font-size: clamp(64px, 10vw, 140px); font-weight: 900; letter-spacing: -0.05em; line-height: .9; }
+    .math-l { font-size: 18px; font-weight: 700; margin-top: 10px; }
+    .math-arrow { font-size: clamp(40px, 6vw, 80px); font-weight: 900; padding-bottom: 30px; }
+    .fix-cols { margin-top: 64px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 56px; align-items: start; }
+    .fix-list { list-style: none; }
+    .fix-list li {
+      font-size: 19px; font-weight: 600; padding: 15px 0;
+      border-bottom: 2px solid rgba(18,5,31,.18);
+      display: flex; gap: 14px;
+    }
+    .fix-list li::before { content: "\2192"; font-weight: 900; }
+    .price-box { background: #12051f; color: var(--text); border-radius: 18px; padding: 34px 30px; }
+    .price { font-size: 76px; font-weight: 900; letter-spacing: -0.05em; line-height: 1; }
+    .price small { font-size: 22px; color: var(--muted); font-weight: 600; letter-spacing: 0; }
+    .price-from { font-size: 15px; color: var(--muted); font-weight: 600; margin-bottom: 6px; }
+    .price-p { margin-top: 16px; color: var(--muted); font-size: 16px; }
+    .price-box .btn { margin-top: 24px; width: 100%; justify-content: center; }
+    .price-fine { margin-top: 14px; font-size: 13px; color: var(--dim); text-align: center; }
+
+    /* Proof */
+    .proof { padding: 110px 0; }
+    .proof .lede { margin-bottom: 56px; }
+    .quotes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 48px 64px; }
+    .q { padding-top: 22px; border-top: 2px solid var(--pink); }
+    .q:nth-child(even) { margin-top: 64px; }
+    .q p { font-size: 20px; line-height: 1.5; font-weight: 500; }
+    .q .who { margin-top: 16px; font-weight: 800; font-size: 15px; }
+    .q .who span { display: block; color: var(--muted); font-weight: 500; }
+
+    /* Contact */
+    .contact { padding: 110px 0 120px; border-top: 1px solid var(--line); }
+    .contact-in { max-width: 640px; margin: 0 auto; text-align: center; }
+    .contact .lede { margin: 18px auto 0; }
+    form { margin-top: 44px; text-align: left; display: grid; gap: 18px; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    label { display: block; font-size: 14px; font-weight: 700; color: var(--muted); margin-bottom: 8px; }
+    input[type=text], input[type=email], textarea {
+      width: 100%; font-family: inherit; font-size: 16px; color: var(--text);
+      background: var(--bg-2); border: 1px solid var(--line); border-radius: 10px;
+      padding: 14px 16px; transition: border-color .2s;
+    }
+    textarea { min-height: 120px; resize: vertical; }
+    input:focus, textarea:focus { outline: none; border-color: var(--pink); }
+    ::placeholder { color: var(--dim); }
+    form .btn { justify-content: center; width: 100%; margin-top: 6px; }
+    .form-msg { text-align: center; font-size: 15px; color: var(--muted); min-height: 22px; }
+    .sent { display: none; margin-top: 44px; padding: 40px 28px; border: 2px solid var(--pink); border-radius: 16px; }
+    .sent.show { display: block; }
+    .sent strong { display: block; font-size: 32px; font-weight: 900; letter-spacing: -0.03em; }
+    .sent p { margin-top: 10px; color: var(--muted); font-size: 17px; }
+    .local { margin-top: 26px; font-size: 14px; color: var(--dim); }
+
+    /* Footer */
+    footer { border-top: 1px solid var(--line); padding: 40px 0; }
+    .foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 22px; }
+    .foot-links { display: flex; flex-wrap: wrap; gap: 20px; list-style: none; font-size: 15px; color: var(--muted); }
+    .foot-links a { text-decoration: none; }
+    .foot-links a:hover { color: var(--text); }
+    .foot-nice { font-size: 15px; color: var(--muted); }
+    .foot-nice a { color: var(--pink); font-weight: 700; text-underline-offset: 3px; }
+    .copy { width: 100%; font-size: 13px; color: var(--dim); }
+
+    /* Reveal */
+    .rv { opacity: 0; transform: translateY(24px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+    .rv.in { opacity: 1; transform: none; }
+
+    @media (max-width: 960px) {
+      .hero-grid, .sins-grid, .fix-cols { grid-template-columns: 1fr; }
+      .exhibit { margin-top: 40px; max-width: 300px; }
+      .verdict { position: static; }
+      .quotes { grid-template-columns: 1fr; }
+      .q:nth-child(even) { margin-top: 0; }
+    }
+    @media (max-width: 600px) {
+      .wrap { padding: 0 16px; }
+      .hero { padding: 36px 0 72px; }
+      .sins, .fix, .proof, .contact { padding: 76px 0; }
+      .math { grid-template-columns: 1fr; gap: 10px; }
+      .math-arrow { padding: 0; transform: rotate(90deg); width: max-content; }
+      .row { grid-template-columns: 1fr; }
+      .guilty { display: none; }
+      .score { font-size: 80px; }
+      .price { font-size: 64px; }
+      .nav-cta { padding: 8px 14px; font-size: 14px; }
+      .logo span b { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .rv { opacity: 1; transform: none; transition: none; }
+      h1 .bad.shake { animation: none; }
+      * { transition-duration: 0s !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="warn">This page is rude on purpose. <a href="/">The polite version is over here.</a></div>
+
+  <nav>
+    <div class="wrap nav-in">
+      <a href="/" class="logo">
+        <img src="../assets/logo-icon.png?v=2" alt="Cosmic Arc Media logo" width="36" height="36">
+        <span>Cosmic Arc<b>Media</b></span>
+      </a>
+      <a href="#fix-it" class="nav-cta">Fix my content</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <h1>Your content looks <span class="bad" id="bad">terrible.</span></h1>
+        <p class="hero-sub">Somebody should fix that.<em>Good news. We're somebody.</em></p>
+        <p class="hero-p">Blurry clips. Audio that sounds like a stairwell. A posting schedule with more gaps than a West Texas fence line. You know it. Your customers know it. The competitor down the street is counting on it.</p>
+        <div class="hero-actions">
+          <a href="#fix-it" class="btn">Fine. Fix it.</a>
+          <a href="/" class="quiet">I'm fragile. Take me to the nice site.</a>
+        </div>
+        <p class="hero-note">Starts at $950/mo &middot; About two hours a month of your time &middot; No long-term lock-in</p>
+      </div>
+
+      <div class="exhibit" aria-label="Example of a bad social media post">
+        <div class="exhibit-label">Exhibit A. Look familiar?</div>
+        <div class="post" aria-hidden="true">
+          <div class="post-head">
+            <div class="post-av"></div>
+            <div class="post-name">yourbusiness_official2<small>Posted 7 months ago</small></div>
+          </div>
+          <div class="post-shot">
+            <div class="blurwrap"></div>
+            <div class="txt">BIG NEWS!!!</div>
+            <div class="play">&#9654;</div>
+            <div class="wm">Made with FreeVidMaker</div>
+          </div>
+          <div class="post-cap">new video!!! link in bio &#128293;&#128293;&#128293; <span class="tags">#business #video #content #marketing #smallbusiness #texas #grind #motivation #fyp</span></div>
+          <div class="post-foot">11 views &middot; 4 of them are you</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="sins">
+    <div class="wrap sins-grid">
+      <div>
+        <h2 class="rv">Be honest.<br>Count your sins.</h2>
+        <p class="lede rv">Check every one that applies. Nobody's watching. Well, we are, a little.</p>
+        <ul class="sin-list" id="sinList">
+          <li><label class="sin"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#12051f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>You posted three times in January and then vanished.<span class="guilty">Guilty</span></label></li>
+          <li><label class="sin"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#12051f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Your audio sounds like it was recorded in a stairwell.<span class="guilty">Guilty</span></label></li>
+          <li><label class="sin"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#12051f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Your thumbnail is a screenshot of you mid-blink.<span class="guilty">Guilty</span></label></li>
+          <li><label class="sin"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#12051f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Every caption ends in a wall of hashtags.<span class="guilty">Guilty</span></label></li>
+          <li><label class="sin"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#12051f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>You said "we should start a podcast" two years ago. Still no podcast.<span class="guilty">Guilty</span></label></li>
+          <li><label class="sin"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#12051f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Your mom is your most loyal viewer.<span class="guilty">Guilty</span></label></li>
+          <li><label class="sin"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#12051f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>You filmed vertical and posted it to YouTube. Sideways.<span class="guilty">Guilty</span></label></li>
+          <li><label class="sin"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#12051f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Somebody's nephew does your editing.<span class="guilty">Guilty</span></label></li>
+        </ul>
+      </div>
+
+      <aside class="verdict" aria-live="polite">
+        <div class="verdict-k">Your score</div>
+        <div class="score"><b id="score">0</b><span>/ 8</span></div>
+        <div class="meter"><i id="meter"></i></div>
+        <div class="verdict-t" id="verdict">Zero? Sure. Scroll back up and try that again.</div>
+        <a href="#fix-it" class="btn">Make it stop</a>
+      </aside>
+    </div>
+  </section>
+
+  <section class="fix" id="the-fix">
+    <div class="wrap">
+      <h2 class="rv">Here's the fix.<br>It's annoyingly simple.</h2>
+      <p class="fix-lede rv">You show up for about two hours a month. You talk. You leave. We write the scripts, run the shoot (we'll come to you), edit everything, and post it everywhere. You go back to running your business.</p>
+
+      <div class="math rv">
+        <div><div class="math-n">~2</div><div class="math-l">hours a month from you</div></div>
+        <div class="math-arrow" aria-hidden="true">&rarr;</div>
+        <div><div class="math-n">100</div><div class="math-l">up to this many pieces of content from us</div></div>
+      </div>
+
+      <div class="fix-cols">
+        <ul class="fix-list rv">
+          <li>Scripts written for you, so you stop rambling</li>
+          <li>An on-location shoot, so you stop filming in your truck</li>
+          <li>2 short clips a day, cut for every platform</li>
+          <li>A new YouTube video and podcast episode every week</li>
+          <li>A blog post and newsletter every week</li>
+          <li>Graphics that don't look like clip art</li>
+          <li>Every piece edited and posted. You touch none of it.</li>
+        </ul>
+        <div class="price-box rv">
+          <div class="price-from">Starts at</div>
+          <div class="price">$950<small>/mo</small></div>
+          <p class="price-p">Less than you've already burned on the ring light, the gimbal, and the editing app you opened once.</p>
+          <a href="#fix-it" class="btn">Fix my content</a>
+          <p class="price-fine">Proposal back in 48 hours &middot; No long-term lock-in</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="proof">
+    <div class="wrap">
+      <h2 class="rv">Don't take our word for it.</h2>
+      <p class="lede rv">We're biased. These people aren't. Their words, unedited.</p>
+      <div class="quotes">
+        <div class="q rv">
+          <p>"Landon is brilliant at what he does! He helped take our podcast to the next level. He is incredibly easy to work with, he listens to your ideas and helps bring them to life seamlessly. Highly recommend!"</p>
+          <div class="who">Shelbi Browne<span>Everything &amp; The Gym</span></div>
+        </div>
+        <div class="q rv">
+          <p>"Cosmic Arc is the pinnacle of customer service and expertise. Their staff went above and beyond creating a customized experience for large scale videos and social media ready content. Highly recommend."</p>
+          <div class="who">Garrett Cole<span>Faith Academy, Marble Falls</span></div>
+        </div>
+        <div class="q rv">
+          <p>"Landon has met and surpassed all expectations I have had! Great experiences and quality work."</p>
+          <div class="who">Mason Collins<span>Live Oak Testosterone</span></div>
+        </div>
+        <div class="q rv">
+          <p>"Landon has done amazing work helping us set up studio space for filming and is a consummate professional. Excellent to work with, a fine gentleman in all the ways that matter."</p>
+          <div class="who">Phat Catz<span>Phat Catz Gaming</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="fix-it">
+    <div class="wrap contact-in">
+      <h2 class="rv">Okay. Fix it.</h2>
+      <p class="lede rv">Name and email. We'll get back to you within 48 hours with a plan. We're much nicer on the phone, promise.</p>
+
+      <form id="angry-form" action="https://formsubmit.co/ajax/landon@cosmicarcmedia.com" method="POST">
+        <div class="row">
+          <div><label for="name">Your name</label><input type="text" id="name" name="name" placeholder="Jane Smith" required></div>
+          <div><label for="email">Email address</label><input type="email" id="email" name="email" placeholder="jane@company.com" required></div>
+        </div>
+        <div><label for="message">Worst thing you've ever posted (optional)</label><textarea id="message" name="message" placeholder="We won't laugh. Out loud."></textarea></div>
+        <input type="hidden" name="source" value="cosmicarcmedia.com/angry">
+        <input type="hidden" name="_subject" value="New lead from cosmicarcmedia.com/angry">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
+        <button type="submit" class="btn" id="send">Fix my content</button>
+        <p class="form-msg" id="formMsg" aria-live="polite"></p>
+      </form>
+
+      <div class="sent" id="sent" role="status">
+        <strong>Got it. Help is on the way.</strong>
+        <p>We'll be in touch within 48 hours. Please don't post anything until then.</p>
+      </div>
+
+      <p class="local">Based in San Angelo, TX. We shoot on location across West Texas, or you come to us.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap foot">
+      <a href="/" class="logo">
+        <img src="../assets/logo-icon.png?v=2" alt="Cosmic Arc Media logo" width="32" height="32">
+        <span>Cosmic Arc<b>Media</b></span>
+      </a>
+      <ul class="foot-links">
+        <li><a href="https://www.instagram.com/cosmicarcmedia" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://www.youtube.com/@CosmicArcMedia" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://www.tiktok.com/@cosmic.arc.media" target="_blank" rel="noopener">TikTok</a></li>
+        <li><a href="mailto:landon@cosmicarcmedia.com">Email</a></li>
+      </ul>
+      <p class="foot-nice">Too harsh? <a href="/">The polite version lives here.</a></p>
+      <p class="copy">&copy; 2026 Cosmic Arc Media LLC &middot; San Angelo, TX</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // Shake "terrible." once on load, again on hover
+      var bad = document.getElementById('bad');
+      function shake() {
+        if (reduce) return;
+        bad.classList.remove('shake'); void bad.offsetWidth; bad.classList.add('shake');
+      }
+      setTimeout(shake, 450);
+      bad.addEventListener('mouseenter', shake);
+
+      // Sins counter
+      var verdicts = [
+        'Zero? Sure. Scroll back up and try that again.',
+        'One. Rough, but we can work with this.',
+        'Two. Rough, but we can work with this.',
+        'Three. This is getting uncomfortable for both of us.',
+        'Four. Half the list. Let that sink in.',
+        'Five. We need to talk. Today.',
+        'Six. Your customers have noticed.',
+        'Seven. Put the phone down. Slowly.',
+        'All eight. Honestly, impressive. Call us.'
+      ];
+      var boxes = document.querySelectorAll('#sinList input');
+      var scoreEl = document.getElementById('score');
+      var meter = document.getElementById('meter');
+      var verdict = document.getElementById('verdict');
+      function update() {
+        var n = 0;
+        boxes.forEach(function (b) {
+          b.closest('.sin').classList.toggle('on', b.checked);
+          if (b.checked) n++;
+        });
+        scoreEl.textContent = n;
+        meter.style.width = (n / boxes.length * 100) + '%';
+        verdict.textContent = verdicts[n];
+      }
+      boxes.forEach(function (b) { b.addEventListener('change', update); });
+
+      // Reveal on scroll
+      var rv = document.querySelectorAll('.rv');
+      if (reduce || !('IntersectionObserver' in window)) {
+        rv.forEach(function (el) { el.classList.add('in'); });
+      } else {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+          });
+        }, { threshold: 0.15 });
+        rv.forEach(function (el) { io.observe(el); });
+      }
+
+      // Form (FormSubmit AJAX, same inbox as the homepage)
+      var form = document.getElementById('angry-form');
+      var btn = document.getElementById('send');
+      var msg = document.getElementById('formMsg');
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (form._honey.value) return;
+        btn.disabled = true; btn.textContent = 'Sending...'; msg.textContent = '';
+        fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } })
+          .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+          .then(function () {
+            form.style.display = 'none';
+            document.getElementById('sent').classList.add('show');
+          })
+          .catch(function () {
+            btn.disabled = false; btn.textContent = 'Fix my content';
+            msg.innerHTML = 'That didn\'t go through. Email <a href="mailto:landon@cosmicarcmedia.com">landon@cosmicarcmedia.com</a> instead.';
+          });
+      });
+    })();
+  </script>
+</body>
+</html>
