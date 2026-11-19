@@ -880,6 +880,34 @@
     .pkg-list li::after { content: ''; position: absolute; left: 6.5px; top: 5px; width: 5px; height: 9px; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg); }
     .pkg-note { color: var(--dim); font-size: 13.5px; margin: 0 auto 26px; max-width: 480px; line-height: 1.6; }
     @media (max-width: 560px) { .pkg-list { grid-template-columns: 1fr; max-width: 300px; } }
+    /* ── Hero reel (replaces the Content Engine in the hero) ── */
+    .reel-wrap { position: relative; max-width: 1000px; margin: 70px auto 0; }
+    .reel { position: relative; aspect-ratio: 16 / 9; border-radius: 20px; overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+      box-shadow: 0 40px 120px -40px rgba(255,77,141,0.45), 0 0 0 1px rgba(255,77,141,0.08), inset 0 1px 0 rgba(255,255,255,0.06); }
+    /* Player is taller than the frame: the video stays 16:9 at full width and YouTube's title and bottom bars fall into the cropped letterbox */
+    .reel iframe { position: absolute; left: 0; top: -110px; width: 100%; height: calc(100% + 220px); border: 0; display: block; pointer-events: none; }
+    .reel.interactive iframe { top: 0; height: 100%; }
+    .reel.interactive iframe { pointer-events: auto; }
+    .reel-poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; transition: opacity .8s var(--ease); }
+    .reel.is-playing .reel-poster, .reel.interactive .reel-poster { opacity: 0; pointer-events: none; }
+    .reel-sound { position: absolute; right: 16px; bottom: 16px; z-index: 2; display: inline-flex; align-items: center; gap: 8px;
+      padding: 9px 15px 9px 12px; border-radius: 100px; border: 1px solid rgba(255,255,255,0.22);
+      background: rgba(8,5,18,0.55); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      color: #fff; font: 600 13px/1 'Inter', sans-serif; cursor: none; transition: background .25s, border-color .25s, transform .3s var(--ease); }
+    body.no-customcursor .reel-sound { cursor: pointer; }
+    .reel-sound:hover { background: rgba(255,77,141,0.35); border-color: rgba(255,77,141,0.6); }
+    .reel-sound svg { width: 17px; height: 17px; }
+    .reel-sound .ico-on { display: none; }
+    .reel-sound[aria-pressed="true"] .ico-on { display: block; }
+    .reel-sound[aria-pressed="true"] .ico-off { display: none; }
+    @media (max-width: 640px) { .reel-wrap { margin-top: 48px; } .reel { border-radius: 14px; } .reel-sound { right: 10px; bottom: 10px; padding: 7px 12px 7px 10px; font-size: 12px; } }
+
+    /* ── Content Engine section (moved to the bottom) ── */
+    #engine { text-align: center; }
+    .engine-head .section-h { margin-left: auto; margin-right: auto; }
+    #engine .flow-wrap { margin-top: 44px; }
   </style>
 </head>
 <body>
@@ -929,73 +957,15 @@
       </div>
       <p class="hero-note">Starts at $950/mo · Proposal back in 48 hours · No long-term lock-in · <a href="#how-it-works" class="hero-link">See how it works ↓</a></p>
 
-      <div class="flow-wrap reveal" id="flowWrap">
-        <div class="estage" id="estage">
-          <div class="estage-track">
-            <div class="panel panel-engine" id="enginePanel">
-              <svg class="ewires" viewBox="0 0 800 440" preserveAspectRatio="none" aria-hidden="true">
-                <path class="ewire wf" d="M400,258 V312"/>
-                <path class="ewire we" pathLength="1" d="M352,220 H404"/>
-                <path class="ewire wo" d="M208,220 H292"/>
-                <path class="ewire wo" d="M412,220 C455,150 462,53 500,53"/>
-                <path class="ewire wo" d="M412,220 C455,188 462,128 500,128"/>
-                <path class="ewire wo" d="M412,220 C455,218 462,202 500,202"/>
-                <path class="ewire wo" d="M412,220 C455,252 462,277 500,277"/>
-                <path class="ewire wo" d="M412,220 C455,288 462,352 500,352"/>
-              </svg>
-
-              <div class="ecore" id="ecore">
-                <div class="ec-machine" aria-hidden="true">
-                  <svg viewBox="0 0 168 72" preserveAspectRatio="none">
-                    <g class="gear"><circle cx="22" cy="20" r="8" fill="none" stroke="#ff8ab5" stroke-width="2" stroke-dasharray="2 3.2"/><circle cx="22" cy="20" r="3" fill="none" stroke="#ff8ab5" stroke-width="1.4"/></g>
-                    <g class="gear r"><circle cx="37" cy="31" r="6" fill="none" stroke="#c89bff" stroke-width="1.8" stroke-dasharray="2 3"/><circle cx="37" cy="31" r="2.4" fill="none" stroke="#c89bff" stroke-width="1.2"/></g>
-                    <g stroke="#9bb8ff" stroke-width="1" fill="#9bb8ff">
-                      <path d="M92 16 H126 V40 H150" fill="none"/>
-                      <path d="M92 54 H138" fill="none"/>
-                      <path d="M126 40 V54" fill="none"/>
-                      <circle cx="92" cy="16" r="2"/><circle cx="126" cy="40" r="2"/><circle cx="150" cy="40" r="2"/><circle cx="92" cy="54" r="2"/><circle cx="138" cy="54" r="2"/>
-                    </g>
-                    <g stroke="#ff8ab5" stroke-width="1" fill="none" opacity="0.8">
-                      <rect x="58" y="14" width="22" height="9" rx="2"/><rect x="58" y="27" width="14" height="6" rx="2"/>
-                    </g>
-                  </svg>
-                  <span class="ec-led l1"></span><span class="ec-led l2"></span><span class="ec-led l3"></span>
-                  <span class="ec-scan"></span>
-                </div>
-                <span class="ec-title">Content Engine</span>
-                <span class="ec-sub">Cosmic Arc Media</span>
-                <span class="shock"></span>
-              </div>
-
-              <div class="evid" id="evid" aria-hidden="true">
-                <div class="evid-screen"><span class="evid-play">▶</span><span class="evid-bar"></span></div>
-                <div class="evid-label">Fully Edited Video</div>
-              </div>
-
-              <div class="track-label" style="top:12%;--oc:#ff4d8d">Clips</div>
-              <div class="track-label" style="top:29%;--oc:#b06bff">Thumbnails</div>
-              <div class="track-label" style="top:46%;--oc:#4d9aff">Graphics</div>
-              <div class="track-label" style="top:63%;--oc:#ff7eb0">Blog &amp; Email</div>
-              <div class="track-label" style="top:80%;--oc:#8b5cf6">Tweets</div>
-
-              <div class="vthumb" id="vthumb" title="Drag your footage in, we produce the rest">
-                <div class="vt-clips"><span class="vt-clip"></span><span class="vt-clip"></span><span class="vt-clip"></span><span class="vt-clip"></span></div>
-                <div class="vt-foot"><span>shoot_footage</span><span class="vt-tag">14 clips</span></div>
-              </div>
-
-              <button class="sched-arrow" id="schedArrow" type="button" aria-label="Schedule everything">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h12"/><path d="M13 6l6 6-6 6"/></svg>
-                <span class="sa-tip">Schedule everything</span>
-              </button>
-            </div>
-            <div class="panel panel-sched">
-              <div class="sched" id="sched"></div>
-            </div>
-          </div>
-        </div>
-        <div class="stage-actions">
-          <p class="flow-label" id="flowLabel">Drag your footage in, or drop a video on it. We turn one shoot into a month of content.</p>
-          <button class="reset-btn" id="resetBtn" type="button" hidden>↺ Reset demo</button>
+      <div class="reel-wrap reveal" id="reelWrap">
+        <div class="reel" id="reel">
+          <iframe id="reelFrame" src="https://www.youtube-nocookie.com/embed/xEh0-fS5x1A?autoplay=1&amp;mute=1&amp;loop=1&amp;playlist=xEh0-fS5x1A&amp;controls=0&amp;playsinline=1&amp;modestbranding=1&amp;rel=0&amp;iv_load_policy=3&amp;disablekb=1&amp;enablejsapi=1" title="Cosmic Arc Media reel" allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+          <img class="reel-poster" id="reelPoster" src="https://i.ytimg.com/vi/xEh0-fS5x1A/maxresdefault.jpg" alt="" aria-hidden="true">
+          <button class="reel-sound" id="reelSound" type="button" aria-pressed="false" aria-label="Turn sound on">
+            <svg class="ico-off" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H2v6h4l5 4z"/><path d="M23 9l-6 6M17 9l6 6"/></svg>
+            <svg class="ico-on" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg>
+            <span class="rs-label">Sound on</span>
+          </button>
         </div>
       </div>
 
@@ -1253,6 +1223,86 @@
             <div class="lo-title">Message sent</div>
             <div class="lo-sub">Cleared for launch. We'll be in touch within 48 hours. 🚀</div>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Content Engine (interactive demo) ───────── -->
+  <section id="engine">
+    <div class="container">
+      <div class="engine-head reveal">
+        <div class="eyebrow">Play with it</div>
+        <h2 class="section-h">One shoot in.<br>A month of content out.</h2>
+        <p class="section-p center">Drag the footage into the Content Engine and watch what a single shoot turns into.</p>
+      </div>
+      <div class="flow-wrap reveal" id="flowWrap">
+        <div class="estage" id="estage">
+          <div class="estage-track">
+            <div class="panel panel-engine" id="enginePanel">
+              <svg class="ewires" viewBox="0 0 800 440" preserveAspectRatio="none" aria-hidden="true">
+                <path class="ewire wf" d="M400,258 V312"/>
+                <path class="ewire we" pathLength="1" d="M352,220 H404"/>
+                <path class="ewire wo" d="M208,220 H292"/>
+                <path class="ewire wo" d="M412,220 C455,150 462,53 500,53"/>
+                <path class="ewire wo" d="M412,220 C455,188 462,128 500,128"/>
+                <path class="ewire wo" d="M412,220 C455,218 462,202 500,202"/>
+                <path class="ewire wo" d="M412,220 C455,252 462,277 500,277"/>
+                <path class="ewire wo" d="M412,220 C455,288 462,352 500,352"/>
+              </svg>
+
+              <div class="ecore" id="ecore">
+                <div class="ec-machine" aria-hidden="true">
+                  <svg viewBox="0 0 168 72" preserveAspectRatio="none">
+                    <g class="gear"><circle cx="22" cy="20" r="8" fill="none" stroke="#ff8ab5" stroke-width="2" stroke-dasharray="2 3.2"/><circle cx="22" cy="20" r="3" fill="none" stroke="#ff8ab5" stroke-width="1.4"/></g>
+                    <g class="gear r"><circle cx="37" cy="31" r="6" fill="none" stroke="#c89bff" stroke-width="1.8" stroke-dasharray="2 3"/><circle cx="37" cy="31" r="2.4" fill="none" stroke="#c89bff" stroke-width="1.2"/></g>
+                    <g stroke="#9bb8ff" stroke-width="1" fill="#9bb8ff">
+                      <path d="M92 16 H126 V40 H150" fill="none"/>
+                      <path d="M92 54 H138" fill="none"/>
+                      <path d="M126 40 V54" fill="none"/>
+                      <circle cx="92" cy="16" r="2"/><circle cx="126" cy="40" r="2"/><circle cx="150" cy="40" r="2"/><circle cx="92" cy="54" r="2"/><circle cx="138" cy="54" r="2"/>
+                    </g>
+                    <g stroke="#ff8ab5" stroke-width="1" fill="none" opacity="0.8">
+                      <rect x="58" y="14" width="22" height="9" rx="2"/><rect x="58" y="27" width="14" height="6" rx="2"/>
+                    </g>
+                  </svg>
+                  <span class="ec-led l1"></span><span class="ec-led l2"></span><span class="ec-led l3"></span>
+                  <span class="ec-scan"></span>
+                </div>
+                <span class="ec-title">Content Engine</span>
+                <span class="ec-sub">Cosmic Arc Media</span>
+                <span class="shock"></span>
+              </div>
+
+              <div class="evid" id="evid" aria-hidden="true">
+                <div class="evid-screen"><span class="evid-play">▶</span><span class="evid-bar"></span></div>
+                <div class="evid-label">Fully Edited Video</div>
+              </div>
+
+              <div class="track-label" style="top:12%;--oc:#ff4d8d">Clips</div>
+              <div class="track-label" style="top:29%;--oc:#b06bff">Thumbnails</div>
+              <div class="track-label" style="top:46%;--oc:#4d9aff">Graphics</div>
+              <div class="track-label" style="top:63%;--oc:#ff7eb0">Blog &amp; Email</div>
+              <div class="track-label" style="top:80%;--oc:#8b5cf6">Tweets</div>
+
+              <div class="vthumb" id="vthumb" title="Drag your footage in, we produce the rest">
+                <div class="vt-clips"><span class="vt-clip"></span><span class="vt-clip"></span><span class="vt-clip"></span><span class="vt-clip"></span></div>
+                <div class="vt-foot"><span>shoot_footage</span><span class="vt-tag">14 clips</span></div>
+              </div>
+
+              <button class="sched-arrow" id="schedArrow" type="button" aria-label="Schedule everything">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h12"/><path d="M13 6l6 6-6 6"/></svg>
+                <span class="sa-tip">Schedule everything</span>
+              </button>
+            </div>
+            <div class="panel panel-sched">
+              <div class="sched" id="sched"></div>
+            </div>
+          </div>
+        </div>
+        <div class="stage-actions">
+          <p class="flow-label" id="flowLabel">Drag your footage in, or drop a video on it. We turn one shoot into a month of content.</p>
+          <button class="reset-btn" id="resetBtn" type="button" hidden>↺ Reset demo</button>
         </div>
       </div>
     </div>
@@ -2034,6 +2084,34 @@
   }, { threshold: 0.5 });
   counters.forEach(c => cio.observe(c));
 
+  /* Hero reel (YouTube): muted autoplay loop; poster covers the player until it is playing; sound toggle via the iframe API */
+  (function heroReel() {
+    const reel = document.getElementById('reel');
+    const frame = document.getElementById('reelFrame');
+    const btn = document.getElementById('reelSound');
+    if (!reel || !frame || !btn) return;
+    const send = (func, args) => frame.contentWindow && frame.contentWindow.postMessage(JSON.stringify({ event: 'command', func: func, args: args || [] }), '*');
+    frame.addEventListener('load', () => {
+      frame.contentWindow.postMessage(JSON.stringify({ event: 'listening', id: 'reelFrame', channel: 'widget' }), '*');
+    });
+    window.addEventListener('message', e => {
+      if (!/youtube(-nocookie)?\.com$/.test(new URL(e.origin).hostname)) return;
+      let d; try { d = JSON.parse(e.data); } catch (_) { return; }
+      const st = d && d.info && d.info.playerState;
+      if (st === 1 && !reel.classList.contains('is-playing')) setTimeout(() => reel.classList.add('is-playing'), 900);
+    });
+    // If autoplay is blocked (low power mode, data saver), hand the player to the visitor
+    setTimeout(() => { if (!reel.classList.contains('is-playing')) reel.classList.add('interactive'); }, 7000);
+    let soundOn = false;
+    btn.addEventListener('click', () => {
+      soundOn = !soundOn;
+      if (soundOn) { send('unMute'); send('setVolume', [100]); send('playVideo'); }
+      else send('mute');
+      btn.setAttribute('aria-pressed', soundOn ? 'true' : 'false');
+      btn.setAttribute('aria-label', soundOn ? 'Turn sound off' : 'Turn sound on');
+      btn.querySelector('.rs-label').textContent = soundOn ? 'Sound off' : 'Sound on';
+    });
+  })();
   </script>
 </body>
 </html>
